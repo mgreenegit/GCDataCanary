@@ -1,0 +1,15 @@
+trigger:
+- master
+
+pool:
+    vmImage: 'windows-2019'
+
+steps:
+- task: AzurePowerShell@3
+  displayName: 'Validate resource group and create if needed'
+  inputs:
+    azureSubscription: 'ARM'
+    azurePowerShellVersion: 'latestVersion'
+    scriptType: 'inlineScript'
+    inline: |
+      get-module az
